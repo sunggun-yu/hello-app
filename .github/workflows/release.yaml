@@ -27,6 +27,7 @@ jobs:
     runs-on: ubuntu-latest
     permissions:
       contents: write
+      packages: write
     outputs:
       metadata: ${{ steps.goreleaser.outputs.metadata }}
     needs: release-please
