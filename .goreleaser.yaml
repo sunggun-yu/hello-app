@@ -40,9 +40,6 @@ dockers:
     goos: linux
     goarch: amd64
     dockerfile: Dockerfile
-    extra_files:
-      - templates
-      - api/spec.json
     image_templates:
       - "{{ .Env.REGISTRY }}/{{ .ProjectName }}:{{ .Version }}-amd64"
       - "{{ .Env.REGISTRY }}/{{ .ProjectName }}:latest-amd64"
@@ -56,9 +53,6 @@ dockers:
     goos: linux
     goarch: arm64
     dockerfile: Dockerfile
-    extra_files:
-      - templates
-      - api/spec.json
     image_templates:
       - "{{ .Env.REGISTRY }}/{{ .ProjectName }}:{{ .Version }}-arm64v8"
       - "{{ .Env.REGISTRY }}/{{ .ProjectName }}:latest-arm64v8"
