@@ -100,7 +100,7 @@ jobs:
           TAG_NAME=${{ needs.release-please.outputs.tag_name }}
           TAG_NAME=${TAG_NAME#v}
           cd manifests/base
-          kustomize edit set image hello-app=$DOCKER_IMAGE_NAME:$TAG_NAME
+          kustomize edit set image hello=$DOCKER_IMAGE_NAME:$TAG_NAME
           cat kustomization.yaml
 
       - name: Build manifest
