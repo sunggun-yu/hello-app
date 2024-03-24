@@ -16,7 +16,7 @@ spec:
         app: hello
     spec:
       containers:
-      - image: hello-app:0.0.1
+      - image: hello-app:0.0.2
         imagePullPolicy: Always
         name: hello
         resources:
