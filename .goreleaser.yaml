@@ -1,6 +1,6 @@
 project_name: hello-app
 env:
-  - REGISTRY=ghcr.io/sunggun-yu
+  - REGISTRY=ghcr.io/{{ if index .Env "GITHUB_REPOSITORY_OWNER"  }}{{ .Env.GITHUB_REPOSITORY_OWNER }}{{ else }}sunggun-yu{{ end }}
 before:
   hooks:
     - go mod tidy
