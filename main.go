@@ -2,15 +2,20 @@ package main
 
 import (
 	"net/http"
+	"os"
 
 	"github.com/gin-gonic/gin"
 )
 
 func main() {
 	r := gin.Default()
-
+	serviceName := os.Getenv("MY_NAME")
 	r.GET("/", func(c *gin.Context) {
-		c.String(http.StatusOK, "hello world")
+		if serviceName != "" {
+			c.String(http.StatusOK, "hello world from "+serviceName)
+		} else {
+			c.String(http.StatusOK, "hello world")
+		}
 	})
 
 	r.GET("/ping", func(c *gin.Context) {
