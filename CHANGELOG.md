@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.1.0](https://github.com/sunggun-yu/release-please-kustomization-bump-demo/compare/v0.0.2...v0.1.0) (2024-03-25)
+
+
+### Features
+
+* set MY_NAME env var ([86be268](https://github.com/sunggun-yu/release-please-kustomization-bump-demo/commit/86be268b37a3291e22ae9f2b9cfbfe7f5ec0e851))
+
 ## [0.0.2](https://github.com/sunggun-yu/release-please-kustomization-bump-demo/compare/v0.0.1...v0.0.2) (2024-03-24)
 
 
