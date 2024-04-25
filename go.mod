@@ -1,4 +1,4 @@
-module github.com/sunggun-yu/release-please-kustomization-bump-demo
+module github.com/sunggun-yu/hello-app
 
 go 1.22.0
 
