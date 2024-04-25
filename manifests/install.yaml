@@ -16,10 +16,13 @@ spec:
         app: hello
     spec:
       containers:
-      - image: hello-app:0.1.0
+      - image: hello-app:0.2.0
         imagePullPolicy: Always
         name: hello
         resources:
           limits:
+            cpu: 1000m
+            memory: 2048Mi
+          requests:
             cpu: 200m
-            memory: 256Mi
+            memory: 512Mi
