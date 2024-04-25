@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.2.0](https://github.com/sunggun-yu/release-please-kustomization-bump-demo/compare/v0.1.0...v0.2.0) (2024-04-25)
+
+
+### Features
+
+* update ([6552066](https://github.com/sunggun-yu/release-please-kustomization-bump-demo/commit/6552066d74ae6c6d6d6b58eb702721ac7b64e0df))
+
 ## [0.1.0](https://github.com/sunggun-yu/release-please-kustomization-bump-demo/compare/v0.0.2...v0.1.0) (2024-03-25)
 
 
