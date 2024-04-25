@@ -1,0 +1,19 @@
+<!-- index.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>hello {{.service}}</title>
+</head>
+<body>
+  <div style="background-color: {{ or .color "#7cc423" }};padding: 10px">Hello!</div>
+  <div>
+    <ul>
+      <li><p>service: {{ or .service "no service name" }}</p></li>
+      <li><p>version: {{ or .version "no version" }}</p></li>
+      <li><p>instance: {{.instance}}</p></li>
+      <li><p>host: {{.host}}</p></li>
+    </ul>
+  </div>
+</body>
+</html>

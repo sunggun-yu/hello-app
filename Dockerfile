@@ -1,6 +1,9 @@
 FROM alpine
 
-COPY hello-app /app/hello-app
+WORKDIR /app
+
+COPY ./templates/ templates/
+COPY hello-app hello-app
 
 EXPOSE 8080
 
