@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.3.1](https://github.com/sunggun-yu/hello-app/compare/v0.3.0...v0.3.1) (2024-04-26)
+
+
+### Bug Fixes
+
+* wrong docker img name ([2cb79d4](https://github.com/sunggun-yu/hello-app/commit/2cb79d4ffa5a33ffbe7fb87e48d5f949fd23ebc0))
+
 ## [0.3.0](https://github.com/sunggun-yu/hello-app/compare/v0.2.1...v0.3.0) (2024-04-26)
 
 
