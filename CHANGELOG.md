@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.2.1](https://github.com/sunggun-yu/hello-app/compare/v0.2.0...v0.2.1) (2024-04-26)
+
+
+### Bug Fixes
+
+* kustomization ([f4463e3](https://github.com/sunggun-yu/hello-app/commit/f4463e39f43587f470a75bb998c24afeeb87fb69))
+
 ## [0.2.0](https://github.com/sunggun-yu/release-please-kustomization-bump-demo/compare/v0.1.0...v0.2.0) (2024-04-25)
 
 
