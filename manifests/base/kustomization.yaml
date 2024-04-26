@@ -6,5 +6,5 @@ resources:
 - deployment.yaml
 images:
 - name: hello
-  newName: ghcr.io/sunggun-yu/hello-app
-  newTag: 0.2.0
+  newName: hello-app
+  newTag: 0.2.1
