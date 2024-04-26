@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.3.0](https://github.com/sunggun-yu/hello-app/compare/v0.2.1...v0.3.0) (2024-04-26)
+
+
+### Features
+
+* some new fake feature �� ([83fd387](https://github.com/sunggun-yu/hello-app/commit/83fd387cfe17967bd953e687b393532aff0f7586))
+
 ## [0.2.1](https://github.com/sunggun-yu/hello-app/compare/v0.2.0...v0.2.1) (2024-04-26)
 
 
