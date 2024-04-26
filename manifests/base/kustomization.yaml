@@ -7,4 +7,4 @@ resources:
 images:
 - name: hello
   newName: hello-app
-  newTag: 0.2.1
+  newTag: 0.3.0

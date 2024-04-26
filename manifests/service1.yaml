@@ -54,8 +54,8 @@ spec:
               fieldPath: metadata.labels['name']
         - name: COLOR
           value: '#ef476f'
-        image: hello-app:0.2.1
-        imagePullPolicy: Always
+        image: hello-app:0.3.0
+        imagePullPolicy: IfNotPresent
         name: hello
         ports:
         - containerPort: 8080

@@ -43,8 +43,8 @@ spec:
           valueFrom:
             fieldRef:
               fieldPath: metadata.labels['name']
-        image: hello-app:0.2.1
-        imagePullPolicy: Always
+        image: hello-app:0.3.0
+        imagePullPolicy: IfNotPresent
         name: hello
         ports:
         - containerPort: 8080
