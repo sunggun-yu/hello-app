@@ -1,0 +1,16 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+resources:
+- ../../base
+patches:
+  - path: patch.yaml
+    target:
+      kind: Deployment
+      name: hello
+labels:
+- pairs:
+    name: Service2
+    service: Service2
+    version: V2
+  includeTemplates: true
+  includeSelectors: false

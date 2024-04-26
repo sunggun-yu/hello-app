@@ -1,6 +1,7 @@
 package main
 
 import (
+	"fmt"
 	"net/http"
 	"os"
 
@@ -14,7 +15,7 @@ func main() {
 
 	serviceName := os.Getenv("SERVICE")
 	version := os.Getenv("VERSION")
-	helloName := os.Getenv("NAME")
+	name := os.Getenv("NAME")
 	hostname, _ := os.Hostname()
 	color := os.Getenv("COLOR")
 
@@ -31,16 +32,19 @@ func main() {
 	})
 
 	r.GET("/hello", func(c *gin.Context) {
-		if helloName != "" {
-			c.String(http.StatusOK, "Hello %s!", helloName)
-		} else {
-			c.String(http.StatusOK, "Hello!")
+
+		message := "Hello!"
+		if name != "" {
+			message = fmt.Sprintf("Hello, %s!", name)
 		}
+		message = fmt.Sprintf("%s, Instance: %s\n", message, hostname)
+		c.String(http.StatusOK, message)
 	})
 
 	r.GET("/ping", func(c *gin.Context) {
 		c.JSON(http.StatusOK, gin.H{
-			"message": "pong",
+			"message":  "pong",
+			"instance": hostname,
 		})
 	})
 

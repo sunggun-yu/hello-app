@@ -18,10 +18,25 @@ spec:
         - name: hello
           image: hello
           imagePullPolicy: Always
+          env:
+          - name: SERVICE
+            valueFrom:
+              fieldRef:
+                fieldPath: metadata.labels['service']
+          - name: VERSION
+            valueFrom:
+              fieldRef:
+                fieldPath: metadata.labels['version']
+          - name: NAME
+            valueFrom:
+              fieldRef:
+                fieldPath: metadata.labels['name']
           resources:
             requests:
-              memory: "512Mi"
-              cpu: "200m"
+              memory: "256Mi"
+              cpu: "100m"
             limits:
               memory: "2048Mi"
               cpu: "1000m"
+          ports:
+          - containerPort: 8080

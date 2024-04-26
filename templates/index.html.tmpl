@@ -6,13 +6,15 @@
     <title>hello {{.service}}</title>
 </head>
 <body>
-  <div style="background-color: {{ or .color "#7cc423" }};padding: 10px">Hello!</div>
+{{ $service := or .service "hello-app" }}
+{{ $version := or .version "v1" }}
+  <div style="background-color: {{ or .color "#7cc423" }};padding: 10px">Hello, {{ $service }} {{ $version }}!</div>
   <div>
     <ul>
-      <li><p>service: {{ or .service "no service name" }}</p></li>
-      <li><p>version: {{ or .version "no version" }}</p></li>
       <li><p>instance: {{.instance}}</p></li>
       <li><p>host: {{.host}}</p></li>
+      <li><p>service: {{ $service }}</p></li>
+      <li><p>version: {{ $version }}</p></li>
     </ul>
   </div>
 </body>

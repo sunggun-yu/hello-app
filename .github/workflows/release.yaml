@@ -105,8 +105,14 @@ jobs:
 
       - name: Build manifest
         run: |
+          # build base manifests
           kustomize build manifests/base > manifests/install.yaml
           cat manifests/install.yaml
+
+          # build test services manifests
+          kustomize build manifests/overlays/service1 > manifests/service1.yaml
+          kustomize build manifests/overlays/service2 > manifests/service2.yaml
+          kustomize build manifests/overlays/service3 > manifests/service3.yaml
 
       - name: Push changes
         run: |

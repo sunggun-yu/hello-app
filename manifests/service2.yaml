@@ -3,6 +3,9 @@ kind: Service
 metadata:
   labels:
     app: hello
+    name: Service2
+    service: Service2
+    version: V2
   name: hello
   namespace: hello
 spec:
@@ -17,6 +20,9 @@ kind: Deployment
 metadata:
   labels:
     app: hello
+    name: Service2
+    service: Service2
+    version: V2
   name: hello
   namespace: hello
 spec:
@@ -28,6 +34,9 @@ spec:
     metadata:
       labels:
         app: hello
+        name: Service2
+        service: Service2
+        version: V2
     spec:
       containers:
       - env:
@@ -43,6 +52,8 @@ spec:
           valueFrom:
             fieldRef:
               fieldPath: metadata.labels['name']
+        - name: COLOR
+          value: '#ffd166'
         image: ghcr.io/sunggun-yu/hello-app:0.2.0
         imagePullPolicy: Always
         name: hello
