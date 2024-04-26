@@ -6,7 +6,7 @@ on:
       - main
 
 env:
-  DOCKER_IMAGE_NAME: hello-app
+  DOCKER_IMAGE_NAME: ghcr.io/sunggun-yu/hello-app
 
 jobs:
   release-please:
