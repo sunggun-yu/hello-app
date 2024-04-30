@@ -14,6 +14,7 @@ spec:
       labels:
         app: hello
     spec:
+      serviceAccountName: hello
       containers:
         - name: hello
           image: hello

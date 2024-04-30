@@ -1,4 +1,14 @@
 apiVersion: v1
+kind: ServiceAccount
+metadata:
+  labels:
+    name: Service3
+    service: Service3
+    version: V1
+  name: hello
+  namespace: hello
+---
+apiVersion: v1
 kind: Service
 metadata:
   labels:
@@ -66,3 +76,4 @@ spec:
           requests:
             cpu: 100m
             memory: 256Mi
+      serviceAccountName: hello
