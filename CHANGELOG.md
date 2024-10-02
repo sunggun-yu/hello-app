@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.4.0](https://github.com/sunggun-yu/hello-app/compare/v0.3.1...v0.4.0) (2024-10-02)
+
+
+### Features
+
+* adding timestamp in response ([7aa890e](https://github.com/sunggun-yu/hello-app/commit/7aa890e1e1339ecdee4e60ec8df6dca9294406c8))
+
 ## [0.3.1](https://github.com/sunggun-yu/hello-app/compare/v0.3.0...v0.3.1) (2024-04-26)
 
 
