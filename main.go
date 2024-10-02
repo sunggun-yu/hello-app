@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"net/http"
 	"os"
+	"time"
 
 	"github.com/gin-gonic/gin"
 )
@@ -22,11 +23,12 @@ func main() {
 	r.GET("/", func(c *gin.Context) {
 
 		data := map[string]interface{}{
-			"color":    color,
-			"service":  serviceName,
-			"version":  version,
-			"instance": hostname,
-			"host":     c.Request.Host,
+			"color":     color,
+			"service":   serviceName,
+			"version":   version,
+			"instance":  hostname,
+			"host":      c.Request.Host,
+			"timestamp": time.Now().Format(time.RFC3339),
 		}
 		c.HTML(http.StatusOK, "index.html.tmpl", data)
 	})
@@ -43,8 +45,9 @@ func main() {
 
 	r.GET("/ping", func(c *gin.Context) {
 		c.JSON(http.StatusOK, gin.H{
-			"message":  "pong",
-			"instance": hostname,
+			"message":   "pong",
+			"instance":  hostname,
+			"timestamp": time.Now().Format(time.RFC3339),
 		})
 	})
 
