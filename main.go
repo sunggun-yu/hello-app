@@ -46,6 +46,8 @@ func main() {
 	r.GET("/ping", func(c *gin.Context) {
 		c.JSON(http.StatusOK, gin.H{
 			"message":   "pong",
+			"service":   serviceName,
+			"version":   version,
 			"instance":  hostname,
 			"timestamp": time.Now().Format(time.RFC3339),
 		})
