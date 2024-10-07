@@ -64,7 +64,7 @@ spec:
               fieldPath: metadata.labels['name']
         - name: COLOR
           value: '#06d6a0'
-        image: ghcr.io/sunggun-yu/hello-app:0.4.0
+        image: ghcr.io/sunggun-yu/hello-app:0.4.1
         imagePullPolicy: IfNotPresent
         name: hello
         ports:
