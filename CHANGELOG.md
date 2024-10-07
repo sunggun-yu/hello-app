@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.4.1](https://github.com/sunggun-yu/hello-app/compare/v0.4.0...v0.4.1) (2024-10-07)
+
+
+### Bug Fixes
+
+* adding more message on ping resp ([468d94e](https://github.com/sunggun-yu/hello-app/commit/468d94ee33d2bfce86449edb8f75c234ed58836d))
+
 ## [0.4.0](https://github.com/sunggun-yu/hello-app/compare/v0.3.1...v0.4.0) (2024-10-02)
 
 
