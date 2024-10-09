@@ -15,6 +15,7 @@ spec:
   ports:
   - name: http
     port: 8080
+    targetPort: http
   selector:
     app: hello
 ---
@@ -54,11 +55,23 @@ spec:
         name: hello
         ports:
         - containerPort: 8080
+          name: http
+          protocol: TCP
+        readinessProbe:
+          failureThreshold: 1
+          httpGet:
+            path: /ping
+            port: 8080
+            scheme: HTTP
+          initialDelaySeconds: 1
+          periodSeconds: 10
+          successThreshold: 1
+          timeoutSeconds: 1
         resources:
           limits:
-            cpu: 1000m
-            memory: 2048Mi
-          requests:
-            cpu: 100m
+            cpu: 200m
             memory: 256Mi
+          requests:
+            cpu: 20m
+            memory: 128Mi
       serviceAccountName: hello
