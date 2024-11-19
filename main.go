@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"net/http"
 	"os"
+	"strconv"
 	"time"
 
 	"github.com/gin-gonic/gin"
@@ -35,11 +36,41 @@ func main() {
 
 	r.GET("/hello", func(c *gin.Context) {
 
+		// Get the 'wait' parameter from query string
+		waitStr := c.Query("wait")
+
+		var duration time.Duration
+
+		if waitStr != "" {
+			// Try to parse as duration
+			d, err := time.ParseDuration(waitStr)
+			if err != nil {
+				// If parsing fails, try to parse as integer and assume seconds
+				sec, err := strconv.Atoi(waitStr)
+				if err != nil {
+					// Unable to parse, set duration to 0
+					duration = 0
+				} else {
+					duration = time.Duration(sec) * time.Second
+				}
+			} else {
+				duration = d
+			}
+		}
+
+		if duration > 0 {
+			time.Sleep(duration)
+		}
+
 		message := "Hello!"
 		if name != "" {
 			message = fmt.Sprintf("Hello, %s!", name)
 		}
-		message = fmt.Sprintf("%s, Instance: %s\n", message, hostname)
+		if duration > 0 {
+			message = fmt.Sprintf("%s, waited %v, Instance: %s\n", message, duration, hostname)
+		} else {
+			message = fmt.Sprintf("%s, Instance: %s\n", message, hostname)
+		}
 		c.String(http.StatusOK, message)
 	})
 
