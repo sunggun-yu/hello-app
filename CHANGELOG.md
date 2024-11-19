@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.5.0](https://github.com/sunggun-yu/hello-app/compare/v0.4.1...v0.5.0) (2024-11-19)
+
+
+### Features
+
+* add wait on hello to simulate long process ([76c7f32](https://github.com/sunggun-yu/hello-app/commit/76c7f32947907e0fe6ae72ab72f2fc1332bc06e0))
+
 ## [0.4.1](https://github.com/sunggun-yu/hello-app/compare/v0.4.0...v0.4.1) (2024-10-07)
 
 
