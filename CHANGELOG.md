@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.6.0](https://github.com/sunggun-yu/hello-app/compare/v0.5.0...v0.6.0) (2024-12-05)
+
+
+### Features
+
+* configurable listening port via env var ([e9f16b1](https://github.com/sunggun-yu/hello-app/commit/e9f16b1b150f0a366c69df7b1ae20bf59ef3325d))
+
 ## [0.5.0](https://github.com/sunggun-yu/hello-app/compare/v0.4.1...v0.5.0) (2024-11-19)
 
 
