@@ -5,7 +5,6 @@ import (
 	"net/http"
 	"os"
 	"strconv"
-	"strings"
 	"time"
 
 	"github.com/gin-gonic/gin"
@@ -18,11 +17,6 @@ func main() {
 	port := os.Getenv("PORT")
 	if port == "" {
 		port = "8080"
-	}
-
-	// Ensure port starts with ":"
-	if !strings.HasPrefix(port, ":") {
-		port = ":" + port
 	}
 
 	// Set the directory from which to load templates
@@ -42,6 +36,7 @@ func main() {
 			"version":   version,
 			"instance":  hostname,
 			"host":      c.Request.Host,
+			"port":      port,
 			"timestamp": time.Now().Format(time.RFC3339),
 		}
 		c.HTML(http.StatusOK, "index.html.tmpl", data)
@@ -93,6 +88,8 @@ func main() {
 			"service":   serviceName,
 			"version":   version,
 			"instance":  hostname,
+			"host":      c.Request.Host,
+			"port":      port,
 			"timestamp": time.Now().Format(time.RFC3339),
 		})
 	})
@@ -101,5 +98,5 @@ func main() {
 		c.String(http.StatusOK, "HEALTHY")
 	})
 
-	r.Run(port) // listen and serve on 0.0.0.0:[PORT]
+	r.Run(fmt.Sprintf(":%s", port)) // listen and serve on 0.0.0.0:[PORT]
 }
