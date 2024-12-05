@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.6.1](https://github.com/sunggun-yu/hello-app/compare/v0.6.0...v0.6.1) (2024-12-05)
+
+
+### Bug Fixes
+
+* add port info in the response ([a7c0c90](https://github.com/sunggun-yu/hello-app/commit/a7c0c90b692c7fa4a433367c43ef48e420adc762))
+
 ## [0.6.0](https://github.com/sunggun-yu/hello-app/compare/v0.5.0...v0.6.0) (2024-12-05)
 
 
