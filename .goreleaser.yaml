@@ -41,6 +41,7 @@ dockers:
     goarch: amd64
     dockerfile: Dockerfile
     extra_files:
+      - assets
       - templates
     image_templates:
       - "{{ .Env.REGISTRY }}/{{ .ProjectName }}:{{ .Version }}-amd64"
@@ -56,6 +57,7 @@ dockers:
     goarch: arm64
     dockerfile: Dockerfile
     extra_files:
+      - assets
       - templates
     image_templates:
       - "{{ .Env.REGISTRY }}/{{ .ProjectName }}:{{ .Version }}-arm64v8"
