@@ -13,7 +13,13 @@ var (
 		}
 		return port
 	}()
-	webPort2 = os.Getenv("PORT_2")
+	webPort2 = func() string {
+		port := os.Getenv("PORT_2")
+		if port == "" {
+			port = "3000"
+		}
+		return port
+	}()
 )
 
 type Config struct {

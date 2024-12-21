@@ -35,16 +35,14 @@ func main() {
 		return server.ListenAndServe()
 	})
 
-	// run secondary web server if PORT_2 is specified
-	if webConfig2.Port != "" {
-		server2 := &http.Server{
-			Addr:    fmt.Sprintf(":%s", webConfig2.Port),
-			Handler: routers.DefaultRouter(webConfig2),
-		}
-		g.Go(func() error {
-			return server2.ListenAndServe()
-		})
+	// run secondary web server
+	server2 := &http.Server{
+		Addr:    fmt.Sprintf(":%s", webConfig2.Port),
+		Handler: routers.DefaultRouter(webConfig2),
 	}
+	g.Go(func() error {
+		return server2.ListenAndServe()
+	})
 
 	if err := g.Wait(); err != nil {
 		log.Fatal(err)
