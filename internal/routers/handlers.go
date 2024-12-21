@@ -11,22 +11,20 @@ import (
 	helloService "github.com/sunggun-yu/hello-app/internal/service"
 )
 
-var (
-	port = config.Config.Port
-)
-
 // indexHandler
-func indexHandler(c *gin.Context) {
-	data := helloService.Index()
-	c.HTML(http.StatusOK, "index.html.tmpl", gin.H{
-		"color":     data.Color,
-		"service":   data.Service,
-		"version":   data.Version,
-		"instance":  data.Instance,
-		"host":      c.Request.Host,
-		"port":      port,
-		"timestamp": data.Timestamp,
-	})
+func indexHandler(config *config.Config) func(*gin.Context) {
+	data := helloService.Index(config)
+	return func(c *gin.Context) {
+		c.HTML(http.StatusOK, "index.html.tmpl", gin.H{
+			"color":     data.Color,
+			"service":   data.Service,
+			"version":   data.Version,
+			"instance":  data.Instance,
+			"host":      c.Request.Host,
+			"port":      data.Port,
+			"timestamp": data.Timestamp,
+		})
+	}
 }
 
 // helloHandler
@@ -66,8 +64,10 @@ func helloHandler(c *gin.Context) {
 }
 
 // pingHandler
-func pingHandler(c *gin.Context) {
-	c.JSON(http.StatusOK, helloService.Ping())
+func pingHandler(config *config.Config) func(*gin.Context) {
+	return func(c *gin.Context) {
+		c.JSON(http.StatusOK, helloService.Ping(config))
+	}
 }
 
 // healthHandler

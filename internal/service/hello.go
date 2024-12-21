@@ -18,13 +18,13 @@ const (
 	healthy = "HEALTHY"
 )
 
-func Index() models.Hello {
+func Index(config *config.Config) models.Hello {
 	return models.Hello{
-		Color:     config.Config.Color,
-		Service:   config.Config.Service,
-		Version:   config.Config.Version,
+		Color:     config.Color,
+		Service:   config.Service,
+		Version:   config.Version,
 		Instance:  hostname,
-		Port:      config.Config.Port,
+		Port:      config.Port,
 		Timestamp: time.Now().Format(time.RFC3339),
 	}
 }
@@ -40,13 +40,13 @@ func Hello() string {
 	return message
 }
 
-func Ping() models.Hello {
+func Ping(config *config.Config) models.Hello {
 	return models.Hello{
 		Message:   "pong",
-		Service:   config.Config.Service,
-		Version:   config.Config.Version,
+		Service:   config.Service,
+		Version:   config.Version,
 		Instance:  hostname,
-		Port:      config.Config.Port,
+		Port:      config.Port,
 		Timestamp: time.Now().Format(time.RFC3339),
 	}
 }

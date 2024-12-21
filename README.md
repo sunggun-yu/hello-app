@@ -47,6 +47,12 @@ The application uses the following environment variables:
 
 - `PORT`: Specifies the port on which the server will listen. Defaults to `8080` if not set. The port is prefixed with `0.0.0.0:` to ensure it listens on all network interfaces.
 
+- `PORT_2`: Port number for the secondary web server
+  - Server will not start if this environment variable is missing
+  - Must be different from PORT (primary server). Application will not start if `PORT` and `PORT_2` have same port
+  - Contains identical endpoints to the primary server
+  - Used to simulate multiple servers in a single Kubernetes Pod
+
 - `SERVICE`: The name of the service. This is used in the response data for the root (`/`) and `/ping` endpoints.
 
 - `VERSION`: The version of the service. This is also included in the response data for the root (`/`) and `/ping` endpoints.
