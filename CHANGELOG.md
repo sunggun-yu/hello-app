@@ -1,5 +1,17 @@
 # Changelog
 
+## [0.7.0](https://github.com/sunggun-yu/hello-app/compare/v0.6.1...v0.7.0) (2024-12-21)
+
+
+### Features
+
+* can run secondary web server ([ab42290](https://github.com/sunggun-yu/hello-app/commit/ab42290c28f7ac857c64921663cda15ae3b74969))
+
+
+### Bug Fixes
+
+* run secondary web server by default ([1d3c0a4](https://github.com/sunggun-yu/hello-app/commit/1d3c0a4d6b141b75c1de7a0d9d2bceec038e69cb))
+
 ## [0.6.1](https://github.com/sunggun-yu/hello-app/compare/v0.6.0...v0.6.1) (2024-12-05)
 
 
