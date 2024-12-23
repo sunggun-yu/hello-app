@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.8.0](https://github.com/sunggun-yu/hello-app/compare/v0.7.0...v0.8.0) (2024-12-23)
+
+
+### Features
+
+* adding GRPC service ([15fea0e](https://github.com/sunggun-yu/hello-app/commit/15fea0eea21121e5e741f3d98cd2f61ab596d74e))
+
 ## [0.7.0](https://github.com/sunggun-yu/hello-app/compare/v0.6.1...v0.7.0) (2024-12-21)
 
 
