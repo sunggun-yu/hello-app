@@ -7,7 +7,13 @@ metadata:
 spec:
   ports:
   - port: 8080
-    targetPort: http
-    name: http
+    targetPort: http-8080
+    name: http-8080
+  - port: 3000
+    targetPort: http-3000
+    name: http-3000
+  - port: 9090
+    targetPort: grpc
+    name: grpc
   selector:
     app: hello

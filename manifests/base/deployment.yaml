@@ -40,8 +40,14 @@ spec:
               memory: "256Mi"
               cpu: "200m"
           ports:
-          - name: http
+          - name: http-8080
             containerPort: 8080
+            protocol: TCP
+          - name: http-3000
+            containerPort: 3000
+            protocol: TCP
+          - name: grpc
+            containerPort: 9090
             protocol: TCP
           readinessProbe:
             httpGet:
@@ -53,4 +59,3 @@ spec:
             periodSeconds: 10
             successThreshold: 1
             timeoutSeconds: 1
-

@@ -20,9 +20,15 @@ metadata:
   namespace: hello
 spec:
   ports:
-  - name: http
+  - name: http-8080
     port: 8080
-    targetPort: http
+    targetPort: http-8080
+  - name: http-3000
+    port: 3000
+    targetPort: http-3000
+  - name: grpc
+    port: 9090
+    targetPort: grpc
   selector:
     app: hello
 ---
@@ -70,7 +76,13 @@ spec:
         name: hello
         ports:
         - containerPort: 8080
-          name: http
+          name: http-8080
+          protocol: TCP
+        - containerPort: 3000
+          name: http-3000
+          protocol: TCP
+        - containerPort: 9090
+          name: grpc
           protocol: TCP
         readinessProbe:
           failureThreshold: 1
