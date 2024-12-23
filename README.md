@@ -1,4 +1,4 @@
-# release-please-kustomization-bump-demo
+# Hello App
 
 This repository demonstrates an automated workflow for updating Docker image tags in k8s manifests. The workflow leverages the following tools:
 
@@ -7,11 +7,11 @@ This repository demonstrates an automated workflow for updating Docker image tag
 - [**GoReleaser**](https://goreleaser.com/): A release automation tool for Go projects, used here for building the application and its Docker image.
 - [**Kustomization**](https://kustomize.io/): build the k8s manifests and update the Docker image tag using the `kustomize edit` feature.
 
-This repository also provides a simple HTTP service to test various scenarios in the k8s. such as Istio, Service Mesh, etc.
+This repository also provides a simple HTTP and GRPC service to test various scenarios in the k8s. such as Istio, Service Mesh, etc.
 
 ## Usage
 
-### Endpoints
+### Web Endpoints
 
 The application exposes the following HTTP endpoints:
 
@@ -53,6 +53,9 @@ The application uses the following environment variables:
   - Contains identical endpoints to the primary server
   - Used to simulate multiple servers in a single Kubernetes Pod
 
+- `GRPC_PORT`: Port number for the GRPC server
+  - default is `9090`
+
 - `SERVICE`: The name of the service. This is used in the response data for the root (`/`) and `/ping` endpoints.
 
 - `VERSION`: The version of the service. This is also included in the response data for the root (`/`) and `/ping` endpoints.
@@ -62,3 +65,49 @@ The application uses the following environment variables:
 - `COLOR`: Used in the response data for the root (`/`) endpoint to specify a color, which can be used for theming or display purposes.
 
 These environment variables allow you to configure the behavior and responses of the application without modifying the code.
+
+### GRPC Endpoints
+
+#### Describe the HelloService
+
+```bash
+grpcurl -plaintext localhost:9090 describe api.HelloService
+```
+
+```protobuf
+service HelloService {
+  rpc Ping ( .api.PingRequest ) returns ( .api.PingResponse );
+  rpc SayHello ( .api.HelloRequest ) returns ( .api.HelloReply );
+}
+```
+
+#### Ping
+
+```bash
+grpcurl -plaintext localhost:9090 api.HelloService.Ping
+```
+
+result:
+
+```json
+{
+  "message": "pong",
+  "instance": "your-host-name",
+  "timestamp": "2024-12-23T14:22:38-05:00"
+}
+```
+
+#### SayHello
+
+```bash
+grpcurl -plaintext -d '{"name": "Darth Vader"}' \
+  localhost:9090 api.HelloService.SayHello
+```
+
+result:
+
+```json
+{
+  "message": "Hello Darth Vader"
+}
+```
