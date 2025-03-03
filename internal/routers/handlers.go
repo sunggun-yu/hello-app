@@ -23,6 +23,7 @@ func indexHandler(config *config.Config) func(*gin.Context) {
 			"host":      c.Request.Host,
 			"port":      data.Port,
 			"timestamp": data.Timestamp,
+			"clientIP":  c.ClientIP(),
 		})
 	}
 }
@@ -66,7 +67,9 @@ func helloHandler(c *gin.Context) {
 // pingHandler
 func pingHandler(config *config.Config) func(*gin.Context) {
 	return func(c *gin.Context) {
-		c.JSON(http.StatusOK, helloService.Ping(config))
+		data := helloService.Ping(config)
+		data.ClientIP = c.ClientIP()
+		c.JSON(http.StatusOK, data)
 	}
 }
 

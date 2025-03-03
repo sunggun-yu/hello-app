@@ -10,4 +10,5 @@ type Hello struct {
 	Service   string `json:"service,omitempty"`
 	Timestamp string `json:"timestamp,omitempty"`
 	Version   string `json:"version,omitempty"`
+	ClientIP  string `json:"clientIp,omitempty"`
 }
