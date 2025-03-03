@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.9.0](https://github.com/sunggun-yu/hello-app/compare/v0.8.0...v0.9.0) (2025-03-03)
+
+
+### Features
+
+* adding client ip ([ced59e5](https://github.com/sunggun-yu/hello-app/commit/ced59e58c4bbe4d52cceaa9b39ab348d56bccc4d))
+
 ## [0.8.0](https://github.com/sunggun-yu/hello-app/compare/v0.7.0...v0.8.0) (2024-12-23)
 
 
