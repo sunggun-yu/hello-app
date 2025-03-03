@@ -56,7 +56,7 @@ spec:
           valueFrom:
             fieldRef:
               fieldPath: metadata.labels['name']
-        image: ghcr.io/sunggun-yu/hello-app:0.8.0
+        image: ghcr.io/sunggun-yu/hello-app:0.9.0
         imagePullPolicy: IfNotPresent
         name: hello
         ports:
