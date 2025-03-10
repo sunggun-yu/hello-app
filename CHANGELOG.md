@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.10.0](https://github.com/sunggun-yu/hello-app/compare/v0.9.0...v0.10.0) (2025-03-10)
+
+
+### Features
+
+* adding remote address to check ([b1d72be](https://github.com/sunggun-yu/hello-app/commit/b1d72beb0545ad63e90b4c5d340ec71d57437f41))
+
 ## [0.9.0](https://github.com/sunggun-yu/hello-app/compare/v0.8.0...v0.9.0) (2025-03-03)
 
 
