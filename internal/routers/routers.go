@@ -14,6 +14,7 @@ func DefaultRouter(config *config.Config) http.Handler {
 	r := gin.New()
 	r.Use(gin.Recovery())
 	r.Use(customLoggerMiddleware(config))
+	r.Use(noCacheMiddleware())
 	gin.DebugPrintRouteFunc = func(httpMethod, absolutePath, handlerName string, nuHandlers int) {
 		fmt.Printf("[GIN-debug][web:%v] %v\t%v\t --> %v (%v handlers)\n", config.Port, httpMethod, absolutePath, handlerName, nuHandlers)
 	}
@@ -30,6 +31,16 @@ func DefaultRouter(config *config.Config) http.Handler {
 	r.GET("/health", healthHandler)
 
 	return r
+}
+
+// Create a no-cache middleware
+func noCacheMiddleware() gin.HandlerFunc {
+	return func(c *gin.Context) {
+		c.Header("Cache-Control", "no-store, no-cache, must-revalidate, max-age=0")
+		c.Header("Pragma", "no-cache")
+		c.Header("Expires", "0")
+		c.Next()
+	}
 }
 
 func customLoggerMiddleware(config *config.Config) gin.HandlerFunc {
