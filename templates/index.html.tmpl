@@ -19,6 +19,25 @@
       <li><p>client IP: {{ .clientIP }}</p></li>
       <li><p>remote address: {{ .remoteAddr }}</p></li>
       <li><p>timestamp: {{ .timestamp }}</p></li>
+      <li>
+        <p>request header:</p>
+        <table border="1" style="margin-left: 20px;">
+          <thead>
+        <tr>
+          <th>Header Name</th>
+          <th>Value</th>
+        </tr>
+          </thead>
+          <tbody>
+        {{range $key, $value := .requestHeader}}
+        <tr>
+          <td>{{$key}}</td>
+          <td>{{$value}}</td>
+        </tr>
+        {{end}}
+          </tbody>
+        </table>
+      </li>
     </ul>
   </div>
 </body>

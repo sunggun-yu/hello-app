@@ -16,15 +16,16 @@ func indexHandler(config *config.Config) func(*gin.Context) {
 	data := helloService.Index(config)
 	return func(c *gin.Context) {
 		c.HTML(http.StatusOK, "index.html.tmpl", gin.H{
-			"color":      data.Color,
-			"service":    data.Service,
-			"version":    data.Version,
-			"instance":   data.Instance,
-			"host":       c.Request.Host,
-			"port":       data.Port,
-			"timestamp":  data.Timestamp,
-			"remoteAddr": c.Request.RemoteAddr,
-			"clientIP":   c.ClientIP(),
+			"color":         data.Color,
+			"service":       data.Service,
+			"version":       data.Version,
+			"instance":      data.Instance,
+			"host":          c.Request.Host,
+			"port":          data.Port,
+			"timestamp":     data.Timestamp,
+			"remoteAddr":    c.Request.RemoteAddr,
+			"clientIP":      c.ClientIP(),
+			"requestHeader": c.Request.Header,
 		})
 	}
 }
