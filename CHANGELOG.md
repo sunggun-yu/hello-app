@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.11.2](https://github.com/sunggun-yu/hello-app/compare/v0.11.1...v0.11.2) (2026-03-24)
+
+
+### Bug Fixes
+
+* **deps:** bump google.golang.org/grpc from 1.69.2 to 1.79.3 ([#31](https://github.com/sunggun-yu/hello-app/issues/31)) ([803a3e0](https://github.com/sunggun-yu/hello-app/commit/803a3e0266f08713a3844d825c886b51320ca220))
+
 ## [0.11.1](https://github.com/sunggun-yu/hello-app/compare/v0.11.0...v0.11.1) (2026-03-24)
 
 
