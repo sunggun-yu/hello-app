@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.11.1](https://github.com/sunggun-yu/hello-app/compare/v0.11.0...v0.11.1) (2026-03-24)
+
+
+### Bug Fixes
+
+* Dockerfile to reduce vulnerabilities ([#29](https://github.com/sunggun-yu/hello-app/issues/29)) ([5134554](https://github.com/sunggun-yu/hello-app/commit/51345542ce43d08fb477e942dc851ea3b560e402))
+
 ## [0.11.0](https://github.com/sunggun-yu/hello-app/compare/v0.10.0...v0.11.0) (2025-09-05)
 
 
