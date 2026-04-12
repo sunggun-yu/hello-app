@@ -17,6 +17,7 @@ func indexHandler(config *config.Config) func(*gin.Context) {
 		data := helloService.Index(config)
 		c.HTML(http.StatusOK, "index.html.tmpl", gin.H{
 			"color":         data.Color,
+			"image":         config.Image,
 			"service":       data.Service,
 			"version":       data.Version,
 			"instance":      data.Instance,
