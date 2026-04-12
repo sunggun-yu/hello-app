@@ -29,6 +29,7 @@ func DefaultRouter(config *config.Config) http.Handler {
 	r.GET("/hello", helloHandler)
 	r.GET("/ping", pingHandler(config))
 	r.GET("/health", healthHandler)
+	r.GET("/livez", livezHandler)
 
 	return r
 }

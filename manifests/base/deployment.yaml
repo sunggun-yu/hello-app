@@ -49,6 +49,15 @@ spec:
           - name: grpc
             containerPort: 9090
             protocol: TCP
+          livenessProbe:
+            httpGet:
+              path: /livez
+              port: 8080
+              scheme: HTTP
+            initialDelaySeconds: 3
+            failureThreshold: 3
+            periodSeconds: 10
+            timeoutSeconds: 1
           readinessProbe:
             httpGet:
               path: /ping
