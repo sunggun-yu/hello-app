@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.11.3](https://github.com/sunggun-yu/hello-app/compare/v0.11.2...v0.11.3) (2026-04-12)
+
+
+### Bug Fixes
+
+* update dependencies, add graceful shutdown, improve UI and probes ([#34](https://github.com/sunggun-yu/hello-app/issues/34)) ([21725c7](https://github.com/sunggun-yu/hello-app/commit/21725c7255c1a361c2b7f77b49c4c26c800525ce))
+
 ## [0.11.2](https://github.com/sunggun-yu/hello-app/compare/v0.11.1...v0.11.2) (2026-03-24)
 
 
