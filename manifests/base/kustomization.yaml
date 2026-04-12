@@ -8,4 +8,4 @@ resources:
 images:
 - name: hello
   newName: ghcr.io/sunggun-yu/hello-app
-  newTag: 0.11.2
+  newTag: 0.11.3

@@ -56,8 +56,17 @@ spec:
           valueFrom:
             fieldRef:
               fieldPath: metadata.labels['name']
-        image: ghcr.io/sunggun-yu/hello-app:0.11.2
+        image: ghcr.io/sunggun-yu/hello-app:0.11.3
         imagePullPolicy: IfNotPresent
+        livenessProbe:
+          failureThreshold: 3
+          httpGet:
+            path: /livez
+            port: 8080
+            scheme: HTTP
+          initialDelaySeconds: 3
+          periodSeconds: 10
+          timeoutSeconds: 1
         name: hello
         ports:
         - containerPort: 8080
