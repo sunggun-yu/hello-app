@@ -62,6 +62,8 @@ The application uses the following environment variables:
 
 - `COLOR`: Used as the accent color for the root (`/`) endpoint UI (header bar background). Accepts any CSS color value (e.g., `#ef476f`, `green`). Defaults to `#7cc423`.
 
+The container image reference (e.g., `ghcr.io/sunggun-yu/hello-app:0.11.3`) is embedded into the binary at build time via `ldflags` and displayed in the UI footer. This is set automatically by GoReleaser during the release process.
+
 ### GRPC Endpoints
 
 #### Describe the HelloService

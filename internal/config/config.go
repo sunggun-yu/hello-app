@@ -12,10 +12,13 @@ const (
 	PRIMARY_GRPC_PORT_ENV  = "GRPC_PORT"
 )
 
+// buildImage is set at build time via ldflags
+var buildImage string
+
 var (
-	service  = os.Getenv("SERVICE")
-	version  = os.Getenv("VERSION")
-	color    = os.Getenv("COLOR")
+	service = os.Getenv("SERVICE")
+	version = os.Getenv("VERSION")
+	color   = os.Getenv("COLOR")
 	webPort1 = func() string {
 		port := os.Getenv(PRIMARY_WEB_PORT_ENV)
 		if port == "" {
@@ -41,6 +44,7 @@ var (
 
 type Config struct {
 	Color   string `json:"color,omitempty"`
+	Image   string `json:"image,omitempty"`
 	Port    string `json:"port,omitempty"`
 	Service string `json:"service,omitempty"`
 	Version string `json:"version,omitempty"`
@@ -49,6 +53,7 @@ type Config struct {
 func WebConfig1() *Config {
 	cfg := &Config{
 		Color:   color,
+		Image:   buildImage,
 		Port:    webPort1,
 		Service: service,
 		Version: version,

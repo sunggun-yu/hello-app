@@ -8,6 +8,9 @@ builds:
   - env:
       - CGO_ENABLED=0
     binary: "{{ .ProjectName }}"
+    ldflags:
+      - -s -w
+      - -X github.com/sunggun-yu/hello-app/internal/config.buildImage={{ .Env.REGISTRY }}/{{ .ProjectName }}:{{ .Version }}
     goos:
       - linux
       - darwin
