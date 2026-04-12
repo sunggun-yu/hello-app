@@ -13,8 +13,8 @@ import (
 
 // indexHandler
 func indexHandler(config *config.Config) func(*gin.Context) {
-	data := helloService.Index(config)
 	return func(c *gin.Context) {
+		data := helloService.Index(config)
 		c.HTML(http.StatusOK, "index.html.tmpl", gin.H{
 			"color":         data.Color,
 			"service":       data.Service,
@@ -79,4 +79,9 @@ func pingHandler(config *config.Config) func(*gin.Context) {
 // healthHandler
 func healthHandler(c *gin.Context) {
 	c.String(http.StatusOK, helloService.Health())
+}
+
+// livezHandler
+func livezHandler(c *gin.Context) {
+	c.String(http.StatusOK, "OK")
 }

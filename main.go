@@ -1,10 +1,14 @@
 package main
 
 import (
+	"context"
 	"fmt"
 	"log"
 	"net"
 	"net/http"
+	"os/signal"
+	"syscall"
+	"time"
 
 	pb "github.com/sunggun-yu/hello-app/grpc"
 	"github.com/sunggun-yu/hello-app/internal/config"
@@ -14,17 +18,13 @@ import (
 	"google.golang.org/grpc/reflection"
 )
 
-var (
-	g errgroup.Group
-)
-
 func main() {
 
 	// config for primary web server
 	webConfig1 := config.WebConfig1()
 	// config for secondary web server
 	webConfig2 := config.WebConfig2()
-	// config for secondary web server
+	// config for primary grpc server
 	grpcConfig1 := config.GrpcConfig1()
 
 	// kill application if port numbers conflict
@@ -32,12 +32,19 @@ func main() {
 		log.Fatal("Port conflict detected between servers")
 	}
 
+	// context that cancels on SIGINT/SIGTERM for graceful shutdown
+	ctx, stop := signal.NotifyContext(context.Background(), syscall.SIGINT, syscall.SIGTERM)
+	defer stop()
+
+	g, ctx := errgroup.WithContext(ctx)
+
 	// run primary web server
 	server := &http.Server{
 		Addr:    fmt.Sprintf(":%s", webConfig1.Port),
 		Handler: routers.DefaultRouter(webConfig1),
 	}
 	g.Go(func() error {
+		log.Printf("starting primary web server on :%s", webConfig1.Port)
 		return server.ListenAndServe()
 	})
 
@@ -47,6 +54,7 @@ func main() {
 		Handler: routers.DefaultRouter(webConfig2),
 	}
 	g.Go(func() error {
+		log.Printf("starting secondary web server on :%s", webConfig2.Port)
 		return server2.ListenAndServe()
 	})
 
@@ -63,10 +71,33 @@ func main() {
 	reflection.Register(grpcServer)
 
 	g.Go(func() error {
+		log.Printf("starting grpc server on :%s", grpcConfig1.Port)
 		return grpcServer.Serve(lis)
 	})
 
+	// graceful shutdown goroutine
+	g.Go(func() error {
+		<-ctx.Done()
+		log.Println("shutting down servers gracefully...")
+
+		shutdownCtx, cancel := context.WithTimeout(context.Background(), 10*time.Second)
+		defer cancel()
+
+		grpcServer.GracefulStop()
+
+		if err := server.Shutdown(shutdownCtx); err != nil {
+			log.Printf("primary web server shutdown error: %v", err)
+		}
+		if err := server2.Shutdown(shutdownCtx); err != nil {
+			log.Printf("secondary web server shutdown error: %v", err)
+		}
+		return nil
+	})
+
 	if err := g.Wait(); err != nil {
-		log.Fatal(err)
+		if err != http.ErrServerClosed {
+			log.Fatal(err)
+		}
 	}
+	log.Println("all servers stopped")
 }

@@ -1,44 +1,122 @@
-<!-- index.html -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>hello {{.service}}</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {{ $service := or .service "hello-app" }}
+    {{ $version := or .version "v1" }}
+    {{ $accent := or .color "#7cc423" }}
+    <title>{{ $service }} {{ $version }}</title>
+    <style>
+        :root {
+            --accent: {{ $accent }};
+            --bg: #f4f5f7;
+            --card-bg: #ffffff;
+            --text: #1a1a1a;
+            --text-muted: #6b7280;
+            --border: #e5e7eb;
+        }
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.5;
+        }
+        .header {
+            background: var(--accent);
+            color: #fff;
+            padding: 1.25rem 2rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            box-shadow: 0 2px 4px rgba(0,0,0,.1);
+        }
+        .header h1 { font-size: 1.4rem; font-weight: 600; }
+        .header .badge {
+            background: rgba(255,255,255,.2);
+            padding: .25rem .75rem;
+            border-radius: 999px;
+            font-size: .85rem;
+        }
+        .container {
+            max-width: 960px;
+            margin: 2rem auto;
+            padding: 0 1rem;
+            display: flex;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+        }
+        .card {
+            background: var(--card-bg);
+            border-radius: 8px;
+            box-shadow: 0 1px 3px rgba(0,0,0,.08);
+            overflow: hidden;
+            flex: 1 1 400px;
+        }
+        .card-title {
+            padding: .75rem 1.25rem;
+            font-size: .8rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: .05em;
+            color: var(--text-muted);
+            border-bottom: 1px solid var(--border);
+        }
+        .info-row {
+            display: flex;
+            justify-content: space-between;
+            padding: .6rem 1.25rem;
+            border-bottom: 1px solid var(--border);
+            font-size: .9rem;
+        }
+        .info-row:last-child { border-bottom: none; }
+        .info-label { color: var(--text-muted); font-weight: 500; }
+        .info-value { font-family: "SF Mono", SFMono-Regular, Consolas, "Liberation Mono", Menlo, monospace; font-size: .85rem; text-align: right; word-break: break-all; max-width: 60%; }
+        table { width: 100%; border-collapse: collapse; font-size: .85rem; }
+        th, td { padding: .5rem 1.25rem; text-align: left; }
+        th { color: var(--text-muted); font-weight: 600; font-size: .8rem; text-transform: uppercase; letter-spacing: .04em; }
+        tbody tr { border-top: 1px solid var(--border); }
+        tbody tr:nth-child(even) { background: #f9fafb; }
+        td:first-child { font-weight: 500; white-space: nowrap; }
+        td:last-child { font-family: "SF Mono", SFMono-Regular, Consolas, "Liberation Mono", Menlo, monospace; font-size: .8rem; word-break: break-all; }
+        @media (max-width: 768px) {
+            .container { flex-direction: column; }
+            .card { flex-basis: auto; }
+            .header { flex-direction: column; gap: .5rem; text-align: center; }
+        }
+    </style>
 </head>
 <body>
-{{ $service := or .service "hello-app" }}
-{{ $version := or .version "v1" }}
-  <div style="background-color: {{ or .color "#7cc423" }};padding: 10px">Hello, {{ $service }} {{ $version }}!</div>
-  <div>
-    <ul>
-      <li><p>instance: {{.instance}}</p></li>
-      <li><p>host: {{.host}}</p></li>
-      <li><p>server port: {{.port}}</p></li>
-      <li><p>service: {{ $service }}</p></li>
-      <li><p>version: {{ $version }}</p></li>
-      <li><p>client IP: {{ .clientIP }}</p></li>
-      <li><p>remote address: {{ .remoteAddr }}</p></li>
-      <li><p>timestamp: {{ .timestamp }}</p></li>
-      <li>
-        <p>request header:</p>
-        <table border="1" style="margin-left: 20px;">
-          <thead>
-        <tr>
-          <th>Header Name</th>
-          <th>Value</th>
-        </tr>
-          </thead>
-          <tbody>
-        {{range $key, $value := .requestHeader}}
-        <tr>
-          <td>{{$key}}</td>
-          <td>{{$value}}</td>
-        </tr>
-        {{end}}
-          </tbody>
-        </table>
-      </li>
-    </ul>
-  </div>
+    <div class="header">
+        <h1>{{ $service }}</h1>
+        <span class="badge">{{ $version }}</span>
+    </div>
+    <div class="container">
+        <div class="card">
+            <div class="card-title">Service Info</div>
+            <div class="info-row"><span class="info-label">Instance</span><span class="info-value">{{ .instance }}</span></div>
+            <div class="info-row"><span class="info-label">Host</span><span class="info-value">{{ .host }}</span></div>
+            <div class="info-row"><span class="info-label">Port</span><span class="info-value">{{ .port }}</span></div>
+            <div class="info-row"><span class="info-label">Service</span><span class="info-value">{{ $service }}</span></div>
+            <div class="info-row"><span class="info-label">Version</span><span class="info-value">{{ $version }}</span></div>
+            <div class="info-row"><span class="info-label">Client IP</span><span class="info-value">{{ .clientIP }}</span></div>
+            <div class="info-row"><span class="info-label">Remote Address</span><span class="info-value">{{ .remoteAddr }}</span></div>
+            <div class="info-row"><span class="info-label">Timestamp</span><span class="info-value">{{ .timestamp }}</span></div>
+        </div>
+        <div class="card">
+            <div class="card-title">Request Headers</div>
+            <table>
+                <thead>
+                    <tr><th>Header</th><th>Value</th></tr>
+                </thead>
+                <tbody>
+                    {{ range $key, $value := .requestHeader }}
+                    <tr><td>{{ $key }}</td><td>{{ $value }}</td></tr>
+                    {{ end }}
+                </tbody>
+            </table>
+        </div>
+    </div>
 </body>
 </html>
