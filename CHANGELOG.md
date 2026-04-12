@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.12.0](https://github.com/sunggun-yu/hello-app/compare/v0.11.3...v0.12.0) (2026-04-12)
+
+
+### Features
+
+* improve UI layout and add build-time image info to footer ([#36](https://github.com/sunggun-yu/hello-app/issues/36)) ([fa8ead3](https://github.com/sunggun-yu/hello-app/commit/fa8ead306d4717d42b00e40e7cacaf92169054d7))
+
 ## [0.11.3](https://github.com/sunggun-yu/hello-app/compare/v0.11.2...v0.11.3) (2026-04-12)
 
 
